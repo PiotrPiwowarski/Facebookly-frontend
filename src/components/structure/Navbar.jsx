@@ -18,15 +18,10 @@ export default function Navbar({id}) {
     navigator("/allPosts")
   }
 
-  function addPost() {
-    navigator("/addPost");
-  }
-
   return (
     <div>
       <button className="btn btn-dark mb-2 m-lg-2" onClick={allUsers}>All Users</button>
       <button className="btn btn-dark mb-2 m-lg-2" onClick={allPosts}>All Posts</button>
-      <button className="btn btn-dark mb-2 m-lg-2" onClick={addPost}>Add Post</button>
       <button className="btn btn-dark mb-2 m-lg-2" onClick={logoutHandle}>Logout</button>
     </div>
   );

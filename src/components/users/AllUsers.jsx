@@ -11,7 +11,7 @@ export  default function AllUsers({id}) {
       const response = await getAllUsers();
       setUsers(response.data);
     };
-    fetchData().catch((e) => console.error("Error: " + e.message));
+    fetchData().catch((e) => console.error(`Error: ${e.message}`));
   }, []);
   
   return (
@@ -25,13 +25,13 @@ export  default function AllUsers({id}) {
       <div>
         <table className="table table-striped">
           <thead>
-          <tr>
-            <th>Id</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Email</th>
-            <th>Gender</th>
-          </tr>
+            <tr>
+              <th>Id</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Email</th>
+              <th>Gender</th>
+            </tr>
           </thead>
           <tbody>
           {users.map(user => (

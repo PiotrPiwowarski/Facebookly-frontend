@@ -20,10 +20,9 @@ export default function Login({onDataFromChild}) {
   }
 
   async function handleSubmit(e) {
-    e.preventDefault();
     try{
+      e.preventDefault();
       const response = await login(loginData);
-      console.log(response.data);
       setLoginData({
         email: "",
         password: ""

@@ -6,14 +6,14 @@ export function addUser(user) {
   try {
     return axios.post(BASE_URL, user);
   } catch (e) {
-    console.error("Error: " + e.message);
+    console.error(`Error: ${e.message}`);
   }
 }
 
 export function getAllUsers() {
   try {
-    return axios.get(BASE_URL + "/all");
+    return axios.get(`${BASE_URL}/all`);
   } catch (e) {
-    console.error("Error: " + e.message);
+    console.error(`Error: ${e.message}`);
   }
 }
