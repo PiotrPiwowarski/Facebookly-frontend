@@ -39,12 +39,12 @@ export default function AddPost({id}) {
   }
 
   return (
-    <div className="main">
+    <div className="form-container">
       <div>
         <Navbar id={id} />
       </div>
       <div>
-        <h1>Add Post</h1>
+        <h2>Add Post</h2>
       </div>
       <div className="form-group">
         <form onSubmit={handleSubmit}>

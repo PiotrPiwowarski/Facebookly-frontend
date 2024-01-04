@@ -23,41 +23,29 @@ export default function AllPosts({id, onDataFromChild}) {
   }
 
   return (
-    <div className="main">
+    <div className="post-list-container">
       <div>
         <Navbar id={id} />
       </div>
       <div>
-        <h1>All Posts</h1>
+        <h2>All Posts</h2>
       </div>
       <div>
-        <button onClick={handleClick}>Add Post</button>
+        <button className="btn btn-dark mb-2 m-lg-2" onClick={handleClick}>Add Post</button>
       </div>
       <div>
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>User Id</th>
-              <th>Content</th>
-              <th>Image</th>
-              <th>Created</th>
-            </tr>
-          </thead>
-          <tbody>
-            {posts.map((post) => (
-                <tr key={post.id}>
-                  <td>{post.id}</td>
-                  <td>{post.userId}</td>
-                  <td>{post.content}</td>
-                  <td><img src={post.image !== null ? `data:image/jpg;base64,${post.image}` : ""}
-                           alt="" style={{maxWidth: '50%'}} /></td>
-                  <td>{post.created}</td>
-                  <AllPostComments postId={post.id} onDataFromChild={onDataFromChild}/>
-                </tr>
-            ))}
-          </tbody>
-        </table>
+        {posts.map((post) => (
+          <article key={post.id}>
+            <p>{post.userId}</p>
+            <p>{post.created}</p>
+            <p>{post.content}</p>
+            <p>{<img src={post.image !== null ? `data:image/jpg;base64,${post.image}` : ""}
+                     alt="" style={{maxWidth: '50%'}} />}</p>
+            <div className="comments-container">
+              <AllPostComments postId={post.id} onDataFromChild={onDataFromChild}/>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   );

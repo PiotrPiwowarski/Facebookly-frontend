@@ -39,9 +39,9 @@ const AddComment = ({userId, postId}) => {
   }
 
   return (
-    <div>
+    <div className="form-container">
       <div>
-        <h1>New Comment</h1>
+        <h2>Add Comment</h2>
       </div>
       <div>
         <form onSubmit={handleSubmit}>

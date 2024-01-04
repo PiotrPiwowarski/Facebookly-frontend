@@ -35,9 +35,9 @@ export default function Login({onDataFromChild}) {
   }
 
   return (
-    <div className="main">
+    <div className="form-container">
       <div>
-        <h1>Login</h1>
+        <h2>Login</h2>
       </div>
       <div>
         <form onSubmit={handleSubmit}>

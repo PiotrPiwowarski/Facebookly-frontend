@@ -43,12 +43,9 @@ export default function AddUser({id}) {
   }
 
   return (
-    <div className="main">
+    <div className="form-container">
       <div>
-        <Navbar id={id} />
-      </div>
-      <div>
-        <h1>Register</h1>
+        <h2>Register</h2>
       </div>
       <div className="form-group">
         <form onSubmit={handleSubmit}>

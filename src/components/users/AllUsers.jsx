@@ -15,7 +15,7 @@ export  default function AllUsers({id}) {
   }, []);
   
   return (
-    <div className="main">
+    <div className="users-list-container">
       <div>
         <Navbar id={id} />
       </div>

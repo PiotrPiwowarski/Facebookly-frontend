@@ -13,8 +13,8 @@ export default function Home() {
 
   return (
     <div className="main">
-      <button className="btn btn-dark mb-2 m-lg-2" onClick={login}>Login</button>
-      <button className="btn btn-dark mb-2 m-lg-2" onClick={addUser}>Register</button>
+      <button className="home-btn btn btn-dark mb-2 m-lg-2" onClick={login}>Login</button>
+      <button className="home-btn btn btn-dark mb-2 m-lg-2" onClick={addUser}>Register</button>
     </div>
   );
 }
