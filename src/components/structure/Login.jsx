@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {login} from "../../services/AuthenticationService";
 
-export default function Login({onDataFromChild}) {
+const Login = ({onDataFromChild}) => {
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -11,7 +11,7 @@ export default function Login({onDataFromChild}) {
 
   const navigator = useNavigate();
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     const {name, value} = e.target;
     setLoginData((prevData) => ({
       ...prevData,
@@ -19,7 +19,7 @@ export default function Login({onDataFromChild}) {
     }))
   }
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     try{
       e.preventDefault();
       const response = await login(loginData);
@@ -69,3 +69,5 @@ export default function Login({onDataFromChild}) {
     </div>
   );
 }
+
+export default Login;

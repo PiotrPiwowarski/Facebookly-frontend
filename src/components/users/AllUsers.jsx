@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {getAllUsers} from "../../services/UserService";
 import Navbar from "../structure/Navbar";
 
-export  default function AllUsers({id}) {
+const AllUsers = ({id}) => {
 
   const [users, setUsers] = useState([]);
 
@@ -49,3 +49,5 @@ export  default function AllUsers({id}) {
     </div>
   );
 }
+
+export default AllUsers;

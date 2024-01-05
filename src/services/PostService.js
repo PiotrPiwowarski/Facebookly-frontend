@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:8080/posts";
 
-export function addPost(post) {
+export const addPost = (post) => {
   try {
     return axios.post(BASE_URL, post);
   } catch(e) {
@@ -10,7 +10,7 @@ export function addPost(post) {
   }
 }
 
-export function getAllPosts() {
+export const getAllPosts = () => {
   try{
     return axios.get(`${BASE_URL}/all`);
   } catch(e) {

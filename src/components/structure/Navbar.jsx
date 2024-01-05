@@ -1,20 +1,20 @@
 import {useNavigate} from "react-router-dom";
 import {logout} from "../../services/AuthenticationService";
 
-export default function Navbar({id}) {
+const Navbar = ({id}) => {
 
   const navigator = useNavigate();
 
-  function logoutHandle() {
+  const logoutHandle = () => {
     logout(id);
     navigator("/");
   }
 
-  function allUsers() {
+  const allUsers = () => {
     navigator("/allUsers")
   }
 
-  function allPosts() {
+  const allPosts = () => {
     navigator("/allPosts")
   }
 
@@ -26,3 +26,5 @@ export default function Navbar({id}) {
     </div>
   );
 }
+
+export default Navbar;

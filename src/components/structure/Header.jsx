@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-export default function Header() {
+const Header = () => {
 
   return (
     <div className="facebookly">
@@ -12,3 +12,5 @@ export default function Header() {
     </div>
   );
 }
+
+export default Header;

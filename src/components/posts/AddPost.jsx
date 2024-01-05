@@ -3,7 +3,7 @@ import {useState} from "react";
 import {addPost} from "../../services/PostService";
 import {useNavigate} from "react-router-dom";
 
-export default function AddPost({id}) {
+const AddPost = ({id}) => {
 
   const [post, setPost] = useState({
     content: "",
@@ -13,7 +13,7 @@ export default function AddPost({id}) {
 
   const navigator = useNavigate();
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     const {name, value} = e.target;
     setPost((prevData) => ({
       ...prevData,
@@ -21,7 +21,7 @@ export default function AddPost({id}) {
     }));
   }
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     try {
       e.preventDefault();
       await addPost(post);
@@ -76,3 +76,5 @@ export default function AddPost({id}) {
     </div>
   );
 }
+
+export default AddPost;

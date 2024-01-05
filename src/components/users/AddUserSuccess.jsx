@@ -1,11 +1,11 @@
 import {useNavigate} from "react-router-dom";
 import Navbar from "../structure/Navbar";
 
-export default function AddUserSuccess({id}) {
+const AddUserSuccess = ({id}) => {
 
   const navigator = useNavigate();
 
-  function handleClick() {
+  const handleClick = () => {
     navigator("/login");
   }
 
@@ -17,3 +17,5 @@ export default function AddUserSuccess({id}) {
     </div>
   );
 }
+
+export default AddUserSuccess;

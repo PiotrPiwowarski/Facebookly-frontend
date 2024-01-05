@@ -4,7 +4,7 @@ import Navbar from "../structure/Navbar";
 import AllPostComments from "../comments/AllPostComments";
 import {useNavigate} from "react-router-dom";
 
-export default function AllPosts({id, onDataFromChild}) {
+const AllPosts = ({id, onDataFromChild}) => {
 
   const [posts, setPosts] = useState([]);
 
@@ -50,3 +50,5 @@ export default function AllPosts({id, onDataFromChild}) {
     </div>
   );
 }
+
+export default AllPosts;

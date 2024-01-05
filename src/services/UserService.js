@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_URL = 'http://localhost:8080/users';
 
-export function addUser(user) {
+export const addUser = (user) => {
   try {
     return axios.post(BASE_URL, user);
   } catch (e) {
@@ -10,7 +10,7 @@ export function addUser(user) {
   }
 }
 
-export function getAllUsers() {
+export const getAllUsers = () => {
   try {
     return axios.get(`${BASE_URL}/all`);
   } catch (e) {

@@ -3,7 +3,7 @@ import {useState} from "react";
 import {addUser} from "../../services/UserService";
 import Navbar from "../structure/Navbar";
 
-export default function AddUser({id}) {
+const AddUser = ({id}) => {
 
   const navigator = useNavigate();
 
@@ -15,7 +15,7 @@ export default function AddUser({id}) {
     password: ""
   });
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     const {name, value} = e.target;
     setUser((prevData) => ({
       ...prevData,
@@ -23,7 +23,7 @@ export default function AddUser({id}) {
     }));
   }
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     try {
       e.preventDefault();
       await addUser(user);
@@ -124,3 +124,5 @@ export default function AddUser({id}) {
     </div>
   );
 }
+
+export default AddUser;
