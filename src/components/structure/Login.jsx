@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {login} from "../../services/AuthenticationService";
 
-const Login = ({onDataFromChild}) => {
+const Login = ({getDataFromChild}) => {
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -28,14 +28,14 @@ const Login = ({onDataFromChild}) => {
         password: ""
       });
       navigator("/allPosts");
-      onDataFromChild(response.data);
+      getDataFromChild(response.data);
     } catch(e) {
       console.error(e);
     }
   }
 
   return (
-    <div className="form-container">
+    <div className="form-container main">
       <div>
         <h2>Login</h2>
       </div>

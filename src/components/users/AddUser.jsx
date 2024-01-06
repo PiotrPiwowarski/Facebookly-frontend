@@ -1,9 +1,8 @@
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {addUser} from "../../services/UserService";
-import Navbar from "../structure/Navbar";
 
-const AddUser = ({id}) => {
+const AddUser = () => {
 
   const navigator = useNavigate();
 
@@ -43,7 +42,7 @@ const AddUser = ({id}) => {
   }
 
   return (
-    <div className="form-container">
+    <div className="form-container main">
       <div>
         <h2>Register</h2>
       </div>

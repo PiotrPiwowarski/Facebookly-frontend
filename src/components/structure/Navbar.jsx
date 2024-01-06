@@ -1,12 +1,12 @@
 import {useNavigate} from "react-router-dom";
 import {logout} from "../../services/AuthenticationService";
 
-const Navbar = ({id}) => {
+const Navbar = ({userId}) => {
 
   const navigator = useNavigate();
 
   const logoutHandle = () => {
-    logout(id);
+    logout(userId);
     navigator("/");
   }
 

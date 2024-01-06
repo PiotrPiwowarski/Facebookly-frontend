@@ -10,9 +10,9 @@ export const addCommentLike = (commentReactionData) => {
   }
 }
 
-export const addCommentDislike = (commentId) => {
+export const addCommentDislike = (commentReactionData) => {
   try {
-    return axios.post(`${BASE_URL}/dislike`, commentId);
+    return axios.post(`${BASE_URL}/dislike`, commentReactionData);
   } catch(e) {
     console.error(`Error: ${e.message}`);
   }
@@ -26,17 +26,17 @@ export const removeCommentReaction = (commentId, userId) => {
   }
 }
 
-export const getAllCommentLikes = (commentId) => {
+export const getAllCommentLikesCount = (commentId) => {
   try {
-    return axios.get(`${BASE_URL}/${commentId}/likes`);
+    return axios.get(`${BASE_URL}/${commentId}/likesCount`);
   } catch(e) {
     console.error(`Error: ${e.message}`);
   }
 }
 
-export const getAllCommentDislikes = (commentId) => {
+export const getAllCommentDislikesCount = (commentId) => {
   try {
-    return axios.get(`${BASE_URL}/${commentId}/dislikes`);
+    return axios.get(`${BASE_URL}/${commentId}/dislikesCount`);
   } catch(e) {
     console.error(`Error: ${e.message}`);
   }

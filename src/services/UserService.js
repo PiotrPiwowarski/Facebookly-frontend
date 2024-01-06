@@ -17,3 +17,11 @@ export const getAllUsers = () => {
     console.error(`Error: ${e.message}`);
   }
 }
+
+export const getUserById = (userId) => {
+  try{
+    return axios.get(`${BASE_URL}/${userId}`)
+  } catch(e) {
+    console.error(`Error: ${e.message}`);
+  }
+}

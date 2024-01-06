@@ -31,12 +31,12 @@ function App() {
         <Header />
         <Routes>
           <Route path="" element={<Home />}></Route>
-          <Route path="/login" element={<Login onDataFromChild={handleUserIdFromChild} />}></Route>
-          <Route path="/addUser" element={<AddUser id={userId} />}></Route>
+          <Route path="/login" element={<Login getDataFromChild={handleUserIdFromChild} />}></Route>
+          <Route path="/addUser" element={<AddUser />}></Route>
           <Route path="/addUserSuccess" element={<AddUserSuccess id={userId} />}></Route>
-          <Route path="/allUsers" element={<AllUsers id={userId} />}></Route>
-          <Route path="/addPost" element={<AddPost id={userId} />}></Route>
-          <Route path="/allPosts" element={<AllPosts id={userId} onDataFromChild={handlePostIdFromChild} />}></Route>
+          <Route path="/allUsers" element={<AllUsers userId={userId} />}></Route>
+          <Route path="/addPost" element={<AddPost userId={userId} />}></Route>
+          <Route path="/allPosts" element={<AllPosts userId={userId} getDataFromChild={handlePostIdFromChild} />}></Route>
           <Route path="/addComment" element={<AddComment userId={userId} postId={postId} />}></Route>
         </Routes>
         <Footer />

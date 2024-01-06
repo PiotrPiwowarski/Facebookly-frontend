@@ -1,14 +1,13 @@
-import Navbar from "../structure/Navbar";
 import {useState} from "react";
 import {addPost} from "../../services/PostService";
 import {useNavigate} from "react-router-dom";
 
-const AddPost = ({id}) => {
+const AddPost = ({userId}) => {
 
   const [post, setPost] = useState({
     content: "",
     imagePath: "",
-    userId: id
+    userId: userId
   });
 
   const navigator = useNavigate();
@@ -29,7 +28,7 @@ const AddPost = ({id}) => {
       setPost({
         content: "",
         imagePath: "",
-        userId: id
+        userId: userId
       });
 
       navigator("/allPosts");
@@ -39,10 +38,7 @@ const AddPost = ({id}) => {
   }
 
   return (
-    <div className="form-container">
-      <div>
-        <Navbar id={id} />
-      </div>
+    <div className="form-container main">
       <div>
         <h2>Add Post</h2>
       </div>

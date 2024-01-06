@@ -113,6 +113,7 @@ article h2 {
   text-align: center;
   color: white;
   position: fixed;
+  margin-top: auto;
 }
 
 .main {
@@ -173,4 +174,15 @@ form button {
 /* Stylizacja przycisku formularza po najechaniu */
 form button:hover {
   background-color: #0056b3; /* Zmiana koloru tła po najechaniu */
+}
+
+/* Stylowanie przycisków like i dislike */
+.like-btn {
+  background-color: green;
+  color: white;
+}
+
+.dislike-btn {
+  background-color: red;
+  color: white;
 }

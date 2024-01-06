@@ -10,9 +10,9 @@ export const addPostLike = (postReactionData) => {
   }
 }
 
-export const addPostDislike = (postId) => {
+export const addPostDislike = (postReactionData) => {
   try {
-    return axios.post(`${BASE_URL}/dislike`, postId);
+    return axios.post(`${BASE_URL}/dislike`, postReactionData);
   } catch(e) {
     console.error(`Error: ${e.message}`);
   }
@@ -26,17 +26,17 @@ export const removePostReaction = (postId, userId) => {
   }
 }
 
-export const getAllPostLikes = (postId) => {
+export const getAllPostLikesCount = (postId) => {
   try {
-    return axios.get(`${BASE_URL}/${postId}/likes`);
+    return axios.get(`${BASE_URL}/${postId}/likesCount`);
   } catch(e) {
     console.error(`Error: ${e.message}`);
   }
 }
 
-export const getAllPostDislikes = (postId) => {
+export const getAllPostDislikesCount = (postId) => {
   try {
-    return axios.get(`${BASE_URL}/${postId}/dislikes`);
+    return axios.get(`${BASE_URL}/${postId}/dislikesCount`);
   } catch(e) {
     console.error(`Error: ${e.message}`);
   }

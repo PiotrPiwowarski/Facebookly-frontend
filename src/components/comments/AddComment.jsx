@@ -39,7 +39,7 @@ const AddComment = ({userId, postId}) => {
   }
 
   return (
-    <div className="form-container">
+    <div className="form-container main">
       <div>
         <h2>Add Comment</h2>
       </div>

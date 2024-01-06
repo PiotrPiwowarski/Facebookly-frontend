@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {getAllUsers} from "../../services/UserService";
 import Navbar from "../structure/Navbar";
 
-const AllUsers = ({id}) => {
+const AllUsers = ({userId}) => {
 
   const [users, setUsers] = useState([]);
 
@@ -15,9 +15,9 @@ const AllUsers = ({id}) => {
   }, []);
   
   return (
-    <div className="users-list-container">
+    <div className="users-list-container main">
       <div>
-        <Navbar id={id} />
+        <Navbar userId={userId} />
       </div>
       <div>
         <h2>All Users</h2>

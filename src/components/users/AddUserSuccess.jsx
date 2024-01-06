@@ -10,7 +10,7 @@ const AddUserSuccess = ({id}) => {
   }
 
   return (
-    <div>
+    <div className="main">
       <Navbar id={id} />
       <h2>Your account has been successfully created!</h2>
       <button className="btn btn-dark mb-2 m-lg-2" onClick={handleClick}>Login</button>
