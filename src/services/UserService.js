@@ -25,3 +25,11 @@ export const getUserById = (userId) => {
     console.error(`Error: ${e.message}`);
   }
 }
+
+export const deleteUser = (userId) => {
+  try{
+    return axios.delete(`${BASE_URL}/${userId}`)
+  } catch(e) {
+    console.error(`Error: ${e.message}`);
+  }
+}

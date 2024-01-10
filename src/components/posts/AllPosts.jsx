@@ -1,13 +1,11 @@
 import {useEffect, useState} from "react";
-import {getAllPosts} from "../../services/PostService";
+import {deletePost, getAllPosts} from "../../services/PostService";
 import Navbar from "../structure/Navbar";
 import AllPostComments from "../comments/AllPostComments";
 import {useNavigate} from "react-router-dom";
 import {
   addPostDislike,
   addPostLike,
-  getAllPostDislikesCount,
-  getAllPostLikesCount
 } from "../../services/PostReactionService";
 
 const AllPosts = ({userId, getDataFromChild}) => {
@@ -40,6 +38,15 @@ const AllPosts = ({userId, getDataFromChild}) => {
   const handleClickAddDislike = async (postId, userId) => {
     try {
       await addPostDislike({postId, userId});
+    } catch(e) {
+      console.error(`Error: ${e.message}`);
+    }
+  }
+
+  const handleClickDeletePost = async (postId, userId) => {
+    try {
+      await deletePost(postId, userId);
+      setPosts((prevState) => prevState.filter(prevPost => prevPost.id !== postId));
     } catch(e) {
       console.error(`Error: ${e.message}`);
     }
@@ -83,6 +90,9 @@ const AllPosts = ({userId, getDataFromChild}) => {
             <button
               onClick={() => handleClickAddDislike(post.id, userId)}
               className="dislike-btn btn mb-2 m-lg-2">Dislike</button>
+            {post.userId === userId ? <button
+              onClick={() => handleClickDeletePost(post.id, userId)}
+              className="delete-btn btn">Delete Post</button> : ""}
             <div className="comments-container mb-2 m-lg-2">
               <AllPostComments
                 postId={post.id}

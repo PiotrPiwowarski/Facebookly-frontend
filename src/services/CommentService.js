@@ -17,3 +17,11 @@ export const getALlPostComments = (postId) => {
     console.error(`Error: ${e.message}`);
   }
 }
+
+export const deleteComment = (commentId, userId) => {
+  try {
+    return axios.delete(`${BASE_URL}/${commentId}/user/${userId}`);
+  } catch(e) {
+    console.error(`Error: ${e.message}`);
+  }
+}

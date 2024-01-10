@@ -1,15 +1,11 @@
 import {useEffect, useState} from "react";
-import {getALlPostComments} from "../../services/CommentService";
+import {deleteComment, getALlPostComments} from "../../services/CommentService";
 import {useNavigate} from "react-router-dom";
 import {addCommentDislike, addCommentLike} from "../../services/CommentReactionService";
 
 const AllPostComments = ({postId, userId, getDataFromChild, formatDate}) =>  {
 
   const [postComments, setPostComments] = useState([]);
-
-  const [likeCount, setLikeCount] = useState(0);
-
-  const [dislikeCount, setDislikeCount] = useState(0);
 
   const navigator = useNavigate();
 
@@ -42,19 +38,12 @@ const AllPostComments = ({postId, userId, getDataFromChild, formatDate}) =>  {
     }
   }
 
-  const handleMouseEnterGetAllLikes = async () => {
+  const handleClickDeleteComment = async (commentId, userId) => {
     try {
-
+      await deleteComment(commentId, userId);
+      setPostComments((prevState) => prevState.filter(prevPostComment => prevPostComment.id !== commentId));
     } catch(e) {
-      console.error(`Error: ${e.message}`);
-    }
-  }
-
-  const handleMouseEnterGetAllDislikes = async () => {
-    try {
-
-    } catch(e) {
-      console.error(`Error: ${e.message}`);
+      console.error(`Error: ${e.message}`)
     }
   }
 
@@ -73,13 +62,14 @@ const AllPostComments = ({postId, userId, getDataFromChild, formatDate}) =>  {
             <p>{formatDate(comment.created)}</p>
             <p>{comment.content}</p>
             <button
-              onMouseEnter={handleMouseEnterGetAllLikes}
               onClick={() => handleClickAddLike(comment.id, userId)}
               className="like-btn btn">Like</button>
             <button
-              onMouseEnter={handleMouseEnterGetAllDislikes}
               onClick={() => handleClickAddDislike(comment.id, userId)}
               className="dislike-btn btn mb-2 m-lg-2">Dislike</button>
+            {comment.userId === userId ? <button
+              onClick={() => handleClickDeleteComment(comment.id, userId)}
+              className="delete-btn btn">Delete Comment</button> : ""}
           </article>
         ))}
       </div>

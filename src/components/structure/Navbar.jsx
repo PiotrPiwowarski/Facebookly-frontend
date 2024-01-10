@@ -1,28 +1,37 @@
 import {useNavigate} from "react-router-dom";
 import {logout} from "../../services/AuthenticationService";
+import {deleteUser} from "../../services/UserService";
+import {useEffect} from "react";
+import { EventEmitter } from 'events';
 
 const Navbar = ({userId}) => {
 
   const navigator = useNavigate();
 
-  const logoutHandle = () => {
+  const handleClickLogout = () => {
     logout(userId);
     navigator("/");
   }
 
-  const allUsers = () => {
+  const handleClickAllUsers = () => {
     navigator("/allUsers")
   }
 
-  const allPosts = () => {
+  const handleClickAllPosts = () => {
     navigator("/allPosts")
+  }
+
+  const handleClickDeleteUser = async () => {
+    await deleteUser(userId);
+    navigator("/login");
   }
 
   return (
     <div className="nav">
-      <button className="btn btn-dark mb-2 m-lg-2" onClick={allUsers}>All Users</button>
-      <button className="btn btn-dark mb-2 m-lg-2" onClick={allPosts}>All Posts</button>
-      <button className="btn btn-dark mb-2 m-lg-2" onClick={logoutHandle}>Logout</button>
+      <button className="btn btn-dark mb-2 m-lg-2" onClick={handleClickAllUsers}>All Users</button>
+      <button className="btn btn-dark mb-2 m-lg-2" onClick={handleClickAllPosts}>All Posts</button>
+      <button className="btn btn-dark mb-2 m-lg-2" onClick={handleClickLogout}>Logout</button>
+      <button className="btn delete-btn mb-2 m-lg-2" onClick={handleClickDeleteUser}>Delete Account</button>
     </div>
   );
 }

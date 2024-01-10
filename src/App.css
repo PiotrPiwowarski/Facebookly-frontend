@@ -75,6 +75,7 @@ article h2 {
 .main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin: 20px;
 }
@@ -176,13 +177,30 @@ form button:hover {
   background-color: #0056b3; /* Zmiana koloru tła po najechaniu */
 }
 
-/* Stylowanie przycisków like i dislike */
+/* Stylowanie przycisków like, dislike i delete */
 .like-btn {
+  border-color: green;
+  background-color: white;
+  color: green;
+}
+
+.like-btn:hover {
   background-color: green;
   color: white;
 }
 
 .dislike-btn {
+  border-color: red;
+  background-color: white;
+  color: red;
+}
+
+.dislike-btn:hover {
+  background-color: red;
+  color: white;
+}
+
+.delete-btn {
   background-color: red;
   color: white;
 }

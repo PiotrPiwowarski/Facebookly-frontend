@@ -17,3 +17,11 @@ export const getAllPosts = () => {
     console.error(`Error: ${e.message}`);
   }
 }
+
+export const deletePost = (postId, userId) => {
+  try{
+    return axios.delete(`${BASE_URL}/${postId}/user/${userId}`);
+  } catch(e) {
+    console.error(`Error: ${e.message}`);
+  }
+}
