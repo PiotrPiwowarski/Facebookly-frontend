@@ -12,7 +12,7 @@ export const addComment = (comment) => {
 
 export const getALlPostComments = (postId) => {
   try {
-    return axios.get(`${BASE_URL}/post/${postId}/all`);
+    return axios.get(`${BASE_URL}/post/${postId}/allWithData`);
   } catch(e) {
     console.error(`Error: ${e.message}`);
   }

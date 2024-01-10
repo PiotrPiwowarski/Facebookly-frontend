@@ -25,6 +25,8 @@ const AllPostComments = ({postId, userId, getDataFromChild, formatDate}) =>  {
   const handleClickAddLike = async (commentId, userId) => {
     try {
       await addCommentLike({commentId, userId});
+      const response = await getALlPostComments(postId);
+      setPostComments(response.data);
     } catch(e) {
       console.error(`Error: ${e.message}`)
     }
@@ -33,6 +35,8 @@ const AllPostComments = ({postId, userId, getDataFromChild, formatDate}) =>  {
   const handleClickAddDislike = async (commentId, userId) => {
     try {
       await addCommentDislike({commentId, userId});
+      const response = await getALlPostComments(postId);
+      setPostComments(response.data);
     } catch(e) {
       console.error(`Error: ${e.message}`)
     }
@@ -41,7 +45,7 @@ const AllPostComments = ({postId, userId, getDataFromChild, formatDate}) =>  {
   const handleClickDeleteComment = async (commentId, userId) => {
     try {
       await deleteComment(commentId, userId);
-      setPostComments((prevState) => prevState.filter(prevPostComment => prevPostComment.id !== commentId));
+      setPostComments((prevState) => prevState.filter(prevPostComment => prevPostComment.commentId !== commentId));
     } catch(e) {
       console.error(`Error: ${e.message}`)
     }
@@ -57,18 +61,18 @@ const AllPostComments = ({postId, userId, getDataFromChild, formatDate}) =>  {
       </div>
       <div>
         {postComments.map((comment) => (
-          <article key={comment.id}>
-            <p>{comment.userId}</p>
+          <article key={comment.commentId}>
+            <p>{comment.firstName} {comment.lastName}</p>
             <p>{formatDate(comment.created)}</p>
             <p>{comment.content}</p>
             <button
-              onClick={() => handleClickAddLike(comment.id, userId)}
-              className="like-btn btn">Like</button>
+              onClick={() => handleClickAddLike(comment.commentId, userId)}
+              className="like-btn btn">LIKE {comment.likes}</button>
             <button
-              onClick={() => handleClickAddDislike(comment.id, userId)}
-              className="dislike-btn btn mb-2 m-lg-2">Dislike</button>
+              onClick={() => handleClickAddDislike(comment.commentId, userId)}
+              className="dislike-btn btn mb-2 m-lg-2">DISLIKE {comment.dislikes}</button>
             {comment.userId === userId ? <button
-              onClick={() => handleClickDeleteComment(comment.id, userId)}
+              onClick={() => handleClickDeleteComment(comment.commentId, userId)}
               className="delete-btn btn">Delete Comment</button> : ""}
           </article>
         ))}

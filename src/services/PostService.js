@@ -12,7 +12,7 @@ export const addPost = (post) => {
 
 export const getAllPosts = () => {
   try{
-    return axios.get(`${BASE_URL}/all`);
+    return axios.get(`${BASE_URL}/allWithData`);
   } catch(e) {
     console.error(`Error: ${e.message}`);
   }

@@ -6,6 +6,8 @@ import {useNavigate} from "react-router-dom";
 import {
   addPostDislike,
   addPostLike,
+  getAllPostDislikesCount,
+  getAllPostLikesCount,
 } from "../../services/PostReactionService";
 
 const AllPosts = ({userId, getDataFromChild}) => {
@@ -22,7 +24,6 @@ const AllPosts = ({userId, getDataFromChild}) => {
     fetchData().catch((e) => console.error(`Error: ${e.message}`));
   }, []);
 
-
   const handleClickAddPost = () => {
     navigator("/addPost");
   }
@@ -30,6 +31,8 @@ const AllPosts = ({userId, getDataFromChild}) => {
   const handleClickAddLike = async (postId, userId) => {
     try {
       await addPostLike({postId, userId});
+      const response = await getAllPosts();
+      setPosts(response.data);
     } catch(e) {
       console.error(`Error: ${e.message}`);
     }
@@ -38,6 +41,8 @@ const AllPosts = ({userId, getDataFromChild}) => {
   const handleClickAddDislike = async (postId, userId) => {
     try {
       await addPostDislike({postId, userId});
+      const response = await getAllPosts();
+      setPosts(response.data);
     } catch(e) {
       console.error(`Error: ${e.message}`);
     }
@@ -78,24 +83,24 @@ const AllPosts = ({userId, getDataFromChild}) => {
       </div>
       <div>
         {posts.map((post) => (
-          <article key={post.id}>
+          <article key={post.postId}>
             <p>{post.firstName} {post.lastName}</p>
             <p>{formatDate(post.created)}</p>
             <p>{post.content}</p>
             <p>{<img src={post.image !== null ? `data:image/jpg;base64,${post.image}` : ""}
                      alt="" style={{maxWidth: '50%'}} />}</p>
             <button
-              onClick={() => handleClickAddLike(post.id, userId)}
-              className="like-btn btn">Like</button>
+              onClick={() => handleClickAddLike(post.postId, userId)}
+              className="like-btn btn">LIKE {post.likes}</button>
             <button
-              onClick={() => handleClickAddDislike(post.id, userId)}
-              className="dislike-btn btn mb-2 m-lg-2">Dislike</button>
+              onClick={() => handleClickAddDislike(post.postId, userId)}
+              className="dislike-btn btn mb-2 m-lg-2">DISLIKE {post.dislikes}</button>
             {post.userId === userId ? <button
-              onClick={() => handleClickDeletePost(post.id, userId)}
+              onClick={() => handleClickDeletePost(post.postId, userId)}
               className="delete-btn btn">Delete Post</button> : ""}
             <div className="comments-container mb-2 m-lg-2">
               <AllPostComments
-                postId={post.id}
+                postId={post.postId}
                 userId={userId}
                 getDataFromChild={getDataFromChild} formatDate={formatDate}/>
             </div>
