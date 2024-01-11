@@ -9,10 +9,12 @@ const AddUser = () => {
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
-    gender: "",
+    gender: "MALE",
     email: "",
     password: ""
   });
+
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -36,8 +38,8 @@ const AddUser = () => {
       });
 
       navigator("/addUserSuccess");
-    } catch(e) {
-      console.error("Error: " + e.message);
+    } catch(err) {
+      setError("Something went wrong!")
     }
   }
 
@@ -46,6 +48,9 @@ const AddUser = () => {
       <div>
         <h2>Register</h2>
       </div>
+      {error !== null ? <div>
+        <p className="error">{error}</p>
+      </div> : ""}
       <div className="form-group">
         <form onSubmit={handleSubmit}>
           <div>
@@ -54,6 +59,7 @@ const AddUser = () => {
               <input
                 type="text"
                 name="firstName"
+                required
                 value={user.firstName}
                 onChange={handleChange}
               />
@@ -65,6 +71,7 @@ const AddUser = () => {
               <input
                 type="text"
                 name="lastName"
+                required
                 value={user.lastName}
                 onChange={handleChange}
               />
@@ -81,6 +88,7 @@ const AddUser = () => {
               <input
                 type="radio"
                 name="gender"
+                checked={user.gender === "MALE"}
                 value="MALE"
                 onChange={handleChange}
               />
@@ -101,6 +109,7 @@ const AddUser = () => {
               <input
                 type="email"
                 name="email"
+                required
                 value={user.email}
                 onChange={handleChange}
               />
@@ -112,6 +121,7 @@ const AddUser = () => {
               <input
                 type="password"
                 name="password"
+                required
                 value={user.password}
                 onChange={handleChange}
               />

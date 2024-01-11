@@ -1,8 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import {logout} from "../../services/AuthenticationService";
 import {deleteUser} from "../../services/UserService";
-import {useEffect} from "react";
-import { EventEmitter } from 'events';
 
 const Navbar = ({userId}) => {
 

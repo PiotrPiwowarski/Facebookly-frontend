@@ -6,8 +6,6 @@ import {useNavigate} from "react-router-dom";
 import {
   addPostDislike,
   addPostLike,
-  getAllPostDislikesCount,
-  getAllPostLikesCount,
 } from "../../services/PostReactionService";
 
 const AllPosts = ({userId, getDataFromChild}) => {
@@ -51,7 +49,7 @@ const AllPosts = ({userId, getDataFromChild}) => {
   const handleClickDeletePost = async (postId, userId) => {
     try {
       await deletePost(postId, userId);
-      setPosts((prevState) => prevState.filter(prevPost => prevPost.id !== postId));
+      setPosts((prevState) => prevState.filter(prevPost => prevPost.postId !== postId));
     } catch(e) {
       console.error(`Error: ${e.message}`);
     }

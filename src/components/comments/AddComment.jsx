@@ -12,6 +12,8 @@ const AddComment = ({userId, postId}) => {
     postId: postId
   })
 
+  const [error, setError] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -25,8 +27,8 @@ const AddComment = ({userId, postId}) => {
 
       navigator("/allPosts");
 
-    } catch(e) {
-      console.error(`Error ${e.message}`);
+    } catch(err) {
+      setError("Something went wrong!")
     }
   }
 
@@ -43,6 +45,9 @@ const AddComment = ({userId, postId}) => {
       <div>
         <h2>Add Comment</h2>
       </div>
+      {error !== null ? <div>
+        <p className="error">{error}</p>
+      </div> : ""}
       <div>
         <form onSubmit={handleSubmit}>
           <div>
@@ -51,6 +56,7 @@ const AddComment = ({userId, postId}) => {
               <input
                 type="text"
                 name="content"
+                required
                 value={comment.content}
                 onChange={handleChange}
               />

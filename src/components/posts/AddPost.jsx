@@ -10,6 +10,8 @@ const AddPost = ({userId}) => {
     userId: userId
   });
 
+  const [error, setError] = useState(null);
+
   const navigator = useNavigate();
 
   const handleChange = (e) => {
@@ -32,8 +34,8 @@ const AddPost = ({userId}) => {
       });
 
       navigator("/allPosts");
-    } catch(e) {
-      console.error("Error: " + e.message);
+    } catch(err) {
+      setError("Something went wrong!")
     }
   }
 
@@ -42,6 +44,9 @@ const AddPost = ({userId}) => {
       <div>
         <h2>Add Post</h2>
       </div>
+      {error !== null ? <div>
+        <p className="error">{error}</p>
+      </div> : ""}
       <div className="form-group">
         <form onSubmit={handleSubmit}>
           <div>
@@ -50,6 +55,7 @@ const AddPost = ({userId}) => {
               <input
                 type="text"
                 name="content"
+                required
                 value={post.content}
                 onChange={handleChange}
               />
@@ -57,7 +63,7 @@ const AddPost = ({userId}) => {
           </div>
           <div>
             <label>
-              Image Path
+              Image
               <input
                 type="text"
                 name="imagePath"

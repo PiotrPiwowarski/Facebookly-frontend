@@ -3,25 +3,13 @@ import axios from "axios";
 const BASE_URL = "http://localhost:8080/posts";
 
 export const addPost = (post) => {
-  try {
-    return axios.post(BASE_URL, post);
-  } catch(e) {
-    console.error(`Error: ${e.message}`);
-  }
+  return axios.post(BASE_URL, post);
 }
 
 export const getAllPosts = () => {
-  try{
-    return axios.get(`${BASE_URL}/allWithData`);
-  } catch(e) {
-    console.error(`Error: ${e.message}`);
-  }
+  return axios.get(`${BASE_URL}/allWithData`);
 }
 
 export const deletePost = (postId, userId) => {
-  try{
-    return axios.delete(`${BASE_URL}/${postId}/user/${userId}`);
-  } catch(e) {
-    console.error(`Error: ${e.message}`);
-  }
+  return axios.delete(`${BASE_URL}/${postId}/user/${userId}`);
 }
