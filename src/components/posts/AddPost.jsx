@@ -63,7 +63,7 @@ const AddPost = ({userId}) => {
           </div>
           <div>
             <label>
-              Image
+              Image (path to image on your computer)
               <input
                 type="text"
                 name="imagePath"
