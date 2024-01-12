@@ -9,6 +9,8 @@ const Login = ({getDataFromChild}) => {
     password: ""
   });
 
+  const [error, setError] = useState(null);
+
   const navigator = useNavigate();
 
   const handleChange = (e) => {
@@ -29,8 +31,8 @@ const Login = ({getDataFromChild}) => {
       });
       navigator("/allPosts");
       getDataFromChild(response.data);
-    } catch(e) {
-      console.error(e);
+    } catch(err) {
+      setError("Something went wrong!");
     }
   }
 
@@ -39,6 +41,9 @@ const Login = ({getDataFromChild}) => {
       <div>
         <h2>Login</h2>
       </div>
+      {error !== null ? <div>
+        <p className="error">{error}</p>
+      </div> : ""}
       <div>
         <form onSubmit={handleSubmit}>
           <div>

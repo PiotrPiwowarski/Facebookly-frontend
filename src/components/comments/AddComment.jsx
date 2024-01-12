@@ -28,7 +28,7 @@ const AddComment = ({userId, postId}) => {
       navigator("/allPosts");
 
     } catch(err) {
-      setError("Something went wrong!")
+      setError("Something went wrong!");
     }
   }
 

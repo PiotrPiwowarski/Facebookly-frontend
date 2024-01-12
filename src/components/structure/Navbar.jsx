@@ -21,7 +21,7 @@ const Navbar = ({userId}) => {
 
   const handleClickDeleteUser = async () => {
     await deleteUser(userId);
-    navigator("/login");
+    navigator("/");
   }
 
   return (
