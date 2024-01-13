@@ -61,7 +61,7 @@ const AddPost = ({userId}) => {
               />
             </label>
           </div>
-          <div>
+          {/*<div>
             <label>
               Image (path to image on your computer)
               <input
@@ -71,7 +71,7 @@ const AddPost = ({userId}) => {
                 onChange={handleChange}
               />
             </label>
-          </div>
+          </div>*/}
           <button className="btn btn-dark mb-2 m-lg-2" type="submit">Add Post</button>
         </form>
       </div>
